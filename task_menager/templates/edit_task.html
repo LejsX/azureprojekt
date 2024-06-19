@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ task.title }}" required><br><br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{ task.description }}</textarea><br><br>
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="To Do" {% if task.status == 'To Do' %}selected{% endif %}>To Do</option>
+            <option value="In Progress" {% if task.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+            <option value="Done" {% if task.status == 'Done' %}selected{% endif %}>Done</option>
+        </select><br><br>
+        <input type="submit" value="Update Task">
+    </form>
+    <a href="{{ url_for('index') }}">Back to Tasks</a>
+</body>
+</html>
